@@ -1,0 +1,25 @@
+============ after processor `livevar_analysis` ================
+
+[variant baseline]
+public fun M::bar() {
+     # live vars:
+  0: return ()
+}
+
+
+[variant baseline]
+fun M::bar2() {
+     # live vars:
+  0: return ()
+}
+
+
+[variant baseline]
+public fun M::foo() {
+     # live vars:
+  0: M::bar()
+     # live vars:
+  1: M::bar2()
+     # live vars:
+  2: return ()
+}

@@ -1,0 +1,20 @@
+============ after processor `debug_instrumenter` ================
+
+[variant baseline]
+public fun M::bar() {
+  0: return ()
+}
+
+
+[variant baseline]
+fun M::bar2() {
+  0: return ()
+}
+
+
+[variant baseline]
+public fun M::foo() {
+  0: M::bar()
+  1: M::bar2()
+  2: return ()
+}

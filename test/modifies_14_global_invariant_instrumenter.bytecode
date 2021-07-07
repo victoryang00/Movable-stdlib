@@ -1,0 +1,40 @@
+============ after processor `global_invariant_instrumenter` ================
+
+[variant baseline]
+public fun M::bar() {
+  0: label L1
+  1: return ()
+}
+
+
+[variant verification]
+public fun M::bar() {
+  0: label L1
+  1: return ()
+}
+
+
+[variant baseline]
+fun M::bar2() {
+  0: label L1
+  1: return ()
+}
+
+
+[variant verification]
+fun M::bar2() {
+  0: label L1
+  1: return ()
+}
+
+
+[variant verification]
+public fun M::foo() {
+     var $t0: num
+  0: M::bar() on_abort goto 4 with $t0
+  1: M::bar2() on_abort goto 4 with $t0
+  2: label L1
+  3: return ()
+  4: label L2
+  5: abort($t0)
+}
